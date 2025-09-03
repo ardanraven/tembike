@@ -10,11 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     
+    <!-- Preload das principais imagens de fundo (melhora LCP/fluidez) -->
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/33734516/pexels-photo-33734516.jpeg">
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/19220189/pexels-photo-19220189.jpeg">
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/5428106/pexels-photo-5428106.jpeg">
+    
     <style>
-        /* --- Configurações Globais e Paleta de Cores (Atualizada com o Logo) --- */
+        /* --- Configurações Globais e Paleta de Cores --- */
         :root {
-            --brand-blue: #0066FF; /* Azul principal do logo */
-            --dark-blue: #0D1B2A;  /* Azul escuro para texto e fundos */
+            --tembike-blue: #0052FF; /* Azul do logo */
+            --dark-blue: #0D1B2A; /* Azul escuro de suporte */
             --white: #FFFFFF;
             --light-gray: #F8F9FA;
             --text-color: #495057;
@@ -28,6 +33,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 90px;
         }
 
         body {
@@ -42,59 +48,19 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
-        /* --- Barra de Navegação --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
-        }
-        
-        .navbar.scrolled {
-            background-color: rgba(13, 27, 42, 0.9);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        /* --- Animações de Entrada (Fade-in) --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .logo img {
-            height: 55px;
-            width: auto;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--brand-blue);
-        }
-
 
         /* --- Tipografia --- */
         h1, h2, h3 {
@@ -121,10 +87,56 @@
             margin-bottom: 1rem;
         }
 
+        /* --- Barra de Navegação --- */
+        .navbar {
+            background-color: rgba(13, 27, 42, 0.9); /* ALTERADO para escuro */
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            will-change: transform;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px; /* Tamanho aumentado */
+            width: auto;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--light-gray); /* ALTERADO para claro */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--tembike-blue);
+        }
+
         /* --- Botão Principal (CTA) --- */
         .cta-button {
             display: inline-block;
-            background-color: var(--brand-blue);
+            background-color: var(--tembike-blue);
             color: var(--white);
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -134,12 +146,12 @@
             font-size: 1.1rem;
             transition: transform 0.3s ease, background-color 0.3s ease;
             border: none;
-            box-shadow: 0 10px 25px -10px var(--brand-blue);
+            box-shadow: 0 10px 25px -10px var(--tembike-blue);
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            background-color: #0052cc;
+            background-color: #0045d6;
         }
         
         /* --- Secção Hero --- */
@@ -153,7 +165,6 @@
             position: relative;
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
 
         .hero-section::after {
@@ -182,7 +193,7 @@
 
         /* --- Secção de Ícones (Vantagens) --- */
         .features-section {
-            padding: 6rem 0;
+            padding: 8rem 0 6rem 0;
             background-color: var(--white);
         }
 
@@ -197,7 +208,7 @@
             width: 50px;
             height: 50px;
             margin-bottom: 1.5rem;
-            color: var(--brand-blue);
+            color: var(--tembike-blue);
         }
 
         /* --- Secções Parallax --- */
@@ -205,12 +216,12 @@
             min-height: 70vh;
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             padding: 4rem 2rem;
+            will-change: background-position;
         }
 
         .parallax-section::after {
@@ -220,7 +231,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(13, 27, 42, 0.55); /* Overlay do azul escuro - um pouco mais transparente */
+            background: rgba(13, 27, 42, 0.6); /* Overlay do azul escuro */
         }
 
         .parallax-content {
@@ -242,7 +253,7 @@
             color: var(--light-gray);
         }
 
-        /* --- Secção de Modelos --- */
+        /* --- Secção Uma Experiência Superior --- */
         .models-section {
             padding: 6rem 0;
             background: var(--light-gray);
@@ -271,7 +282,7 @@
 
         .model-card img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
         }
         
@@ -283,6 +294,39 @@
             margin-top: 1.5rem;
             padding: 0.8rem 2rem;
             font-size: 1rem;
+        }
+
+        /* --- Secção de Testemunhos --- */
+        .testimonials-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-gray);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--tembike-blue);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-blue);
+        }
+
+        .testimonial-card cite {
+            font-style: normal;
+            font-weight: 600;
+            color: var(--text-color);
         }
 
         /* --- Secção CTA Final --- */
@@ -311,50 +355,69 @@
             padding: 4rem 0 2rem 0;
             text-align: center;
         }
-        
-        .footer .logo {
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
+
         .footer .logo img {
-            height: 70px;
+            height: 60px; /* Tamanho aumentado */
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
         }
 
         .footer p {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
         }
+
+        /* Reduz movimento se o utilizador preferir */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
+            }
+            .fade-in {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+            .parallax-bg {
+                background-attachment: initial;
+            }
+            .navbar {
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 <body>
-
+    
+    <!-- BARRA DE NAVEGAÇÃO FIXA -->
     <nav class="navbar">
-        <a href="#" class="logo">
-            <img src="https://i.ibb.co/vtTDrpn/Design-sem-nome.png" alt="Logo Tembike">
-        </a>
-        <ul class="nav-links">
-            <li><a href="#">Início</a></li>
-            <li><a href="#modelos">Vantagens</a></li>
-            <li><a href="#features-section">Porquê Tembike?</a></li>
-        </ul>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="https://i.ibb.co/vtTDrpn/Design-sem-nome.png" alt="Logo Tembike">
+            </a>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#features">Vantagens</a></li>
+                    <li><a href="#experience">Experiência</a></li>
+                    <li><a href="#testimonials">Testemunhos</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="hero-section" style="background-image: url('https://images.pexels.com/photos/15020750/pexels-photo-15020750.jpeg');">
+    <header class="hero-section parallax-bg" style="background-image: url('https://images.pexels.com/photos/15020750/pexels-photo-15020750.jpeg');">
         <div class="hero-content">
             <h1>Onde a Estrada Encontra a Liberdade.</h1>
             <p>Reinvente o seu caminho. Sinta a potência elétrica e a pura alegria de pedalar com Tembike.</p>
-            <a href="#modelos" class="cta-button">Descubra as Vantagens</a>
+            <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20vantagens%20da%20Tembike." target="_blank" class="cta-button">Fale Conosco no WhatsApp</a>
         </div>
     </header>
 
     <main>
         <!-- FEATURES SECTION -->
-        <section id="features-section" class="features-section">
+        <section id="features" class="features-section fade-in">
             <div class="container">
-                <h2>Porquê Tembike?</h2>
                 <div class="features-grid">
                     <div class="feature-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
@@ -364,7 +427,7 @@
                     <div class="feature-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
                         <h3>Design Apaixonante</h3>
-                        <p>Linhas elegantes e ergonomia superior para uma experiência de condução tão confortável quanto bonita.</p>
+                        <p>Linhas elegantes e ergonomia superior para uma experiência de condução tanto confortável quanto bonita.</p>
                     </div>
                     <div class="feature-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582" /></svg>
@@ -376,7 +439,7 @@
         </section>
 
         <!-- PARALLAX - URBANO -->
-        <section class="parallax-section" style="background-image: url('https://images.pexels.com/photos/19220189/pexels-photo-19220189.jpeg');">
+        <section class="parallax-section parallax-bg" style="background-image: url('https://images.pexels.com/photos/19220189/pexels-photo-19220189.jpeg');">
             <div class="parallax-content">
                 <h2>A Cidade é o Seu Parque de Diversões.</h2>
                 <p>Liberte-se do trânsito. Redescubra as ruas, os atalhos e a energia da sua cidade com a agilidade Tembike.</p>
@@ -384,24 +447,24 @@
         </section>
 
         <!-- MODELS SECTION -->
-        <section id="modelos" class="models-section">
+        <section id="experience" class="models-section fade-in">
             <div class="container">
                 <h2>Uma Experiência Superior</h2>
                 <div class="models-grid">
                     <div class="model-card">
-                        <img src="https://images.pexels.com/photos/13738409/pexels-photo-13738409.jpeg" alt="[Imagem de uma e-bike Tembike em detalhe tecnológico]">
+                        <img src="https://images.pexels.com/photos/13738409/pexels-photo-13738409.jpeg" alt="[Imagem de uma e-bike Tembike em detalhe tecnológico]" loading="lazy" decoding="async">
                         <div class="model-card-content">
                             <h3>Tecnologia que Impulsiona</h3>
                             <p>Nossas e-bikes são equipadas com baterias de longa duração e motores silenciosos, garantindo um desempenho excecional em qualquer terreno.</p>
-                            <a href="#" class="cta-button">Conheça a Inovação</a>
+                            <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20tecnologia%20das%20e-bikes." target="_blank" class="cta-button">Saber Mais</a>
                         </div>
                     </div>
                     <div class="model-card">
-                        <img src="https://images.pexels.com/photos/4392883/pexels-photo-4392883.jpeg" alt="[Imagem de uma pessoa a desfrutar do design de uma e-bike Tembike]">
+                        <img src="https://images.pexels.com/photos/4392883/pexels-photo-4392883.jpeg" alt="[Imagem de uma pessoa a desfrutar do design de uma e-bike Tembike]" loading="lazy" decoding="async">
                         <div class="model-card-content">
                             <h3>Design Pensado para Si</h3>
-                            <p>Cada detalhe é projetado para o seu conforto e estilo. Geometria ergonómica e acabamentos premium para uma experiência de condução única.</p>
-                            <a href="#" class="cta-button">Explore o Design</a>
+                            <p>Cada detalhe é projetado para o seu conforto e estilo. Geometria ergonômica e acabamentos premium para uma experiência de condução única.</p>
+                            <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20design%20das%20e-bikes." target="_blank" class="cta-button">Saber Mais</a>
                         </div>
                     </div>
                 </div>
@@ -409,19 +472,40 @@
         </section>
         
         <!-- PARALLAX - NATUREZA -->
-        <section class="parallax-section" style="background-image: url('https://images.pexels.com/photos/5428106/pexels-photo-5428106.jpeg');">
+        <section class="parallax-section parallax-bg" style="background-image: url('https://images.pexels.com/photos/5428106/pexels-photo-5428106.jpeg');">
             <div class="parallax-content">
                 <h2>O Seu Horizonte Acabou de Ficar Maior.</h2>
                 <p>Onde o asfalto termina, a sua verdadeira jornada começa. Sinta a natureza em cada pedalada.</p>
             </div>
         </section>
         
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials" class="testimonials-section fade-in">
+            <div class="container">
+                <h2>O que os nossos ciclistas dizem</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"A Tembike transformou a minha forma de me mover pela cidade. Chego ao trabalho revigorado e sem stress. É um novo estilo de vida!"</p>
+                        <cite>Curitiba; Ana Paula, Designer</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Nunca pensei que subiria as colinas do Parque Tanguá com tanta facilidade. A potência é incrível e a bateria dura imenso!"</p>
+                        <cite>Curitiba; Ricardo Mendes, Aventureiro</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Mais saúde, menos trânsito e mais tempo para aproveitar Curitiba. A Tembike é a melhor escolha que fiz pela minha mobilidade."</p>
+                        <cite>Curitiba; Sofia G., Estudante</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- CTA FINAL -->
-        <section class="cta-final-section">
+        <section id="contact" class="cta-final-section fade-in">
             <div class="container">
                 <h2>Está Pronto Para a Revolução?</h2>
                 <p>A melhor forma de entender é sentir. Agende um test-ride gratuito e descubra o poder da Tembike.</p>
-                <a href="#" class="cta-button">Agendar o Meu Test-Ride</a>
+                <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20agendar%20um%20test-ride%20gratuito." target="_blank" class="cta-button">Agendar Meu Test-Ride</a>
             </div>
         </section>
 
@@ -431,26 +515,85 @@
     <footer class="footer">
         <div class="container">
             <a href="#" class="logo">
-                <img src="https://i.ibb.co/vtTDrpn/Design-sem-nome.png" alt="Logo Tembike">
+                <img src="https://i.ibb.co/vtTDrpn/Design-sem-nome.png" alt="Logo Tembike no Rodapé" loading="lazy" decoding="async">
             </a>
             <p>&copy; 2025 Tembike Industries. Todos os direitos reservados. Pedale para o futuro.</p>
         </div>
     </footer>
-    
+
     <script>
-        const nav = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+        document.addEventListener("DOMContentLoaded", function() {
+            // Animação de Fade-in
+            const fadeElems = document.querySelectorAll('.fade-in');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            fadeElems.forEach(elem => {
+                observer.observe(elem);
+            });
+
+            // Ocultar/Mostrar barra de navegação ao rolar (suave e performático)
+            let lastScrollTop = 0;
+            const navbar = document.querySelector('.navbar');
+            let navHidden = false;
+            let navTicking = false;
+
+            function updateNavbar(scrollTop) {
+                const shouldHide = scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight;
+                if (shouldHide !== navHidden) {
+                    navHidden = shouldHide;
+                    navbar.style.transform = navHidden ? 'translateY(-100%)' : 'translateY(0)';
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                navTicking = false;
             }
+
+            window.addEventListener('scroll', function() {
+                if (navTicking) return;
+                navTicking = true;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                requestAnimationFrame(() => updateNavbar(scrollTop));
+            }, { passive: true });
+
+            // Parallax Suave com requestAnimationFrame
+            const parallaxElems = document.querySelectorAll('.parallax-bg');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let parallaxTicking = false;
+
+            function updateParallax() {
+                parallaxElems.forEach((elem) => {
+                    const rect = elem.getBoundingClientRect();
+                    const speed = parseFloat(elem.dataset.speed) || 0.5;
+                    const y = rect.top * speed;
+                    elem.style.backgroundPosition = `center calc(50% + ${y}px)`;
+                });
+                parallaxTicking = false;
+            }
+
+            function onScrollParallax() {
+                if (reduceMotion || parallaxElems.length === 0) return;
+                if (!parallaxTicking) {
+                    parallaxTicking = true;
+                    requestAnimationFrame(updateParallax);
+                }
+            }
+
+            window.addEventListener('scroll', onScrollParallax, { passive: true });
+            window.addEventListener('resize', onScrollParallax, { passive: true });
+            // Atualiza no carregamento inicial
+            onScrollParallax();
         });
     </script>
 
 </body>
 </html>
-
-
-
-
