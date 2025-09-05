@@ -11,15 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Preload das principais imagens de fundo (melhora LCP/fluidez) -->
-    <link rel="preload" as="image" href="https://images.pexels.com/photos/33734516/pexels-photo-33734516.jpeg">
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/15020750/pexels-photo-15020750.jpeg">
     <link rel="preload" as="image" href="https://images.pexels.com/photos/19220189/pexels-photo-19220189.jpeg">
-    <link rel="preload" as="image" href="https://images.pexels.com/photos/5428106/pexels-photo-5428106.jpeg">
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/542c8106/pexels-photo-5428106.jpeg">
     
     <style>
         /* --- Configurações Globais e Paleta de Cores --- */
         :root {
             --tembike-blue: #0052FF; /* Azul do logo */
-            --dark-blue: #0D1B2A; /* Azul escuro de suporte */
+            --dark-blue: #0052FF; /* Azul escuro de suporte */
             --white: #FFFFFF;
             --light-gray: #F8F9FA;
             --text-color: #495057;
@@ -89,9 +89,9 @@
 
         /* --- Barra de Navegação --- */
         .navbar {
-            background-color: rgba(13, 27, 42, 0.9); /* ALTERADO para escuro */
+            background-color: #0052FF;
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 0.5rem 0; /* Altura diminuída */
             position: fixed;
             top: 0;
             left: 0;
@@ -110,7 +110,7 @@
         }
 
         .logo img {
-            height: 80px; /* Tamanho aumentado */
+            height: 60px; /* Tamanho diminuído */
             width: auto;
         }
         
@@ -122,7 +122,7 @@
         
         .nav-menu a {
             text-decoration: none;
-            color: var(--light-gray); /* ALTERADO para claro */
+            color: var(--light-gray);
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             font-size: 1rem;
@@ -130,7 +130,26 @@
         }
 
         .nav-menu a:hover {
-            color: var(--tembike-blue);
+            color: var(--white);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--light-gray);
+            transition: all 0.3s ease-in-out;
         }
 
         /* --- Botão Principal (CTA) --- */
@@ -145,13 +164,14 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.3s ease, background-color 0.3s ease;
-            border: none;
+            border: 2px solid var(--white);
             box-shadow: 0 10px 25px -10px var(--tembike-blue);
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            background-color: #0045d6;
+            background-color: var(--white);
+            color: var(--tembike-blue);
         }
         
         /* --- Secção Hero --- */
@@ -165,6 +185,7 @@
             position: relative;
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* PARALLAX ESTÁTICO */
         }
 
         .hero-section::after {
@@ -174,7 +195,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.3)); /* Gradiente subtil com o azul escuro */
+            background: linear-gradient(to top, rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.3));
         }
         
         .hero-content {
@@ -216,12 +237,12 @@
             min-height: 70vh;
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* PARALLAX ESTÁTICO */
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             padding: 4rem 2rem;
-            will-change: background-position;
         }
 
         .parallax-section::after {
@@ -231,7 +252,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(13, 27, 42, 0.6); /* Overlay do azul escuro */
+            background: rgba(13, 27, 42, 0.6);
         }
 
         .parallax-content {
@@ -294,7 +315,14 @@
             margin-top: 1.5rem;
             padding: 0.8rem 2rem;
             font-size: 1rem;
+            border: 2px solid var(--tembike-blue);
         }
+        
+        .model-card .cta-button:hover {
+             background-color: var(--tembike-blue);
+             color: var(--white);
+        }
+
 
         /* --- Secção de Testemunhos --- */
         .testimonials-section {
@@ -328,6 +356,37 @@
             font-weight: 600;
             color: var(--text-color);
         }
+        
+        /* --- Secção Onde Estamos --- */
+        .location-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .location-map iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
 
         /* --- Secção CTA Final --- */
         .cta-final-section {
@@ -357,7 +416,7 @@
         }
 
         .footer .logo img {
-            height: 60px; /* Tamanho aumentado */
+            height: 60px; /* Tamanho diminuído */
             margin-bottom: 1.5rem;
             opacity: 0.8;
         }
@@ -365,6 +424,81 @@
         .footer p {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: var(--dark-blue);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                justify-content: center;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+            }
+            
+            .nav-menu li {
+                padding: 1.5rem 0;
+            }
+            
+            .nav-menu a {
+                font-size: 1.5rem;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            h1 {
+                font-size: clamp(2.2rem, 10vw, 3rem);
+            }
+            h2 {
+                font-size: clamp(1.8rem, 8vw, 2.2rem);
+                margin-bottom: 3rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+
+            .features-section, .models-section, .testimonials-section, .location-section, .cta-final-section {
+                padding: 4rem 0;
+            }
+
+            .logo img {
+                height: 50px; /* Tamanho diminuído */
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .location-map {
+                order: 2; /* Mapa aparece depois do texto no mobile */
+            }
         }
 
         /* Reduz movimento se o utilizador preferir */
@@ -378,7 +512,7 @@
                 opacity: 1 !important;
             }
             .parallax-bg {
-                background-attachment: initial;
+                background-attachment: initial !important;
             }
             .navbar {
                 transition: none !important;
@@ -399,14 +533,20 @@
                     <li><a href="#features">Vantagens</a></li>
                     <li><a href="#experience">Experiência</a></li>
                     <li><a href="#testimonials">Testemunhos</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#location">Onde Estamos</a></li>
+                    <li><a href="#contact">Contato</a></li>
                 </ul>
             </div>
+             <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="hero-section parallax-bg" style="background-image: url('https://images.pexels.com/photos/15020750/pexels-photo-15020750.jpeg');">
+    <header class="hero-section parallax-bg" style="background-image: url('https://images.pexels.com/photos/15020750/pexels-photo-15020750.jpeg'); background-position: center 65%;">
         <div class="hero-content">
             <h1>Onde a Estrada Encontra a Liberdade.</h1>
             <p>Reinvente o seu caminho. Sinta a potência elétrica e a pura alegria de pedalar com Tembike.</p>
@@ -486,15 +626,34 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <p>"A Tembike transformou a minha forma de me mover pela cidade. Chego ao trabalho revigorado e sem stress. É um novo estilo de vida!"</p>
-                        <cite>Curitiba; Ana Paula, Designer</cite>
+                        <cite>Curitiba - Ana Paula, Designer</cite>
                     </div>
                     <div class="testimonial-card">
                         <p>"Nunca pensei que subiria as colinas do Parque Tanguá com tanta facilidade. A potência é incrível e a bateria dura imenso!"</p>
-                        <cite>Curitiba; Ricardo Mendes, Aventureiro</cite>
+                        <cite>Curitiba - Ricardo Mendes, Aventureiro</cite>
                     </div>
                     <div class="testimonial-card">
                         <p>"Mais saúde, menos trânsito e mais tempo para aproveitar Curitiba. A Tembike é a melhor escolha que fiz pela minha mobilidade."</p>
-                        <cite>Curitiba; Sofia G., Estudante</cite>
+                        <cite>Curitiba - Sofia G., Estudante</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION SECTION -->
+        <section id="location" class="location-section fade-in">
+            <div class="container">
+                <h2>Onde Estamos</h2>
+                <div class="location-content">
+                    <div class="location-info">
+                        <h3>Visite a Nossa Loja</h3>
+                        <p>Venha conhecer a Tembike de perto, tomar um café e fazer um test-ride. A nossa equipa está pronta para o receber!</p>
+                        <p><strong>Endereço:</strong><br>
+                        Rua 24 de Maio, 327 - Centro<br>
+                        CCuritiba - PR, 80230-080</p>
+                    </div>
+                    <div class="location-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28825.534179856062!2d-49.29732621523434!3d-25.43185136484859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce46fc1f95d69%3A0xc31970b661f7944!2sMega%20Infotronic!5e0!3m2!1spt-BR!2sbr!4v1757089566351!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -517,7 +676,7 @@
             <a href="#" class="logo">
                 <img src="https://i.ibb.co/vtTDrpn/Design-sem-nome.png" alt="Logo Tembike no Rodapé" loading="lazy" decoding="async">
             </a>
-            <p>&copy; 2025 Tembike Industries. Todos os direitos reservados. Pedale para o futuro.</p>
+            <p>&copy; 2025 Tembike. Todos os direitos reservados. Pedale para o futuro.</p>
         </div>
     </footer>
 
@@ -565,33 +724,19 @@
                 requestAnimationFrame(() => updateNavbar(scrollTop));
             }, { passive: true });
 
-            // Parallax Suave com requestAnimationFrame
-            const parallaxElems = document.querySelectorAll('.parallax-bg');
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            let parallaxTicking = false;
+            // Lógica do Menu Hamburger
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
 
-            function updateParallax() {
-                parallaxElems.forEach((elem) => {
-                    const rect = elem.getBoundingClientRect();
-                    const speed = parseFloat(elem.dataset.speed) || 0.5;
-                    const y = rect.top * speed;
-                    elem.style.backgroundPosition = `center calc(50% + ${y}px)`;
-                });
-                parallaxTicking = false;
-            }
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
 
-            function onScrollParallax() {
-                if (reduceMotion || parallaxElems.length === 0) return;
-                if (!parallaxTicking) {
-                    parallaxTicking = true;
-                    requestAnimationFrame(updateParallax);
-                }
-            }
-
-            window.addEventListener('scroll', onScrollParallax, { passive: true });
-            window.addEventListener('resize', onScrollParallax, { passive: true });
-            // Atualiza no carregamento inicial
-            onScrollParallax();
+            document.querySelectorAll(".nav-menu a").forEach(n => n.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navMenu.classList.remove("active");
+            }));
         });
     </script>
 
