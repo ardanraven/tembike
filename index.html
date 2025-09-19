@@ -11,6 +11,8 @@
     
     <link rel="preload" as="image" href="https://images.pexels.com/photos/15675779/pexels-photo-15675779.jpeg">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <style>
         :root {
             --tembike-blue: #0052FF;
@@ -49,6 +51,50 @@
         p { color: var(--light-text); margin-bottom: 1rem; max-width: 60ch; }
         .text-center { text-align: center; }
         .text-center p { margin-left: auto; margin-right: auto; }
+        
+        /* --- ESTILOS ANIMAÇÃO DE DESENHO DA BICICLETA --- */
+        #bike-draw-animation-section {
+            background: var(--tembike-blue);
+            text-align: center;
+        }
+        #bike-draw-animation-section h2,
+        #bike-draw-animation-section p {
+            color: var(--background-white);
+        }
+        #bike-draw-animation-section p {
+            opacity: 0.9;
+        }
+        #bike-draw-animation-section .animation-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        #bike-draw-animation-section .bike-frame {
+            text-align: center;
+            margin-top: 2rem; /* Ajustado para dar espaço */
+        }
+        #bike-draw-animation-section .bike-frame svg {
+            max-width: 70%;
+        }
+        #bike-draw-animation-section .wheel {
+            width: 44%;
+            position: absolute;
+            bottom: -7%;
+            animation: ride 20s linear infinite;
+        }
+        #bike-draw-animation-section .wheels svg:first-of-type {
+            left: -4%;
+        }
+        #bike-draw-animation-section .wheels svg:last-of-type {
+            right: -3%;
+            transform: rotate(90deg);
+        }
+        
+        @keyframes ride {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
+        }
 
         /* --- NAVEGAÇÃO --- */
         .navbar {
@@ -171,7 +217,7 @@
         .testimonial-card cite { font-style: normal; font-weight: 600; }
         .testimonial-card cite span { display: block; font-weight: 400; color: var(--light-text); font-size: 0.9rem; }
 
-        /* --- NOVA ANIMAÇÃO BICICLETA --- */
+        /* --- NOVA ANIMAÇÃO BICICLETA GSAP --- */
         #new-animation-section {
             padding: 0;
         }
@@ -291,6 +337,71 @@
                 <h1>A Cidade Aos Seus Pés.</h1>
                 <p class="animated-element">Redescubra Curitiba com a liberdade, potência e o design inovador da Tembike. O seu percurso diário, reinventado.</p>
                 <a href="#features" class="cta-button animated-element">Explore a Revolução</a>
+            </div>
+        </section>
+        
+        <section id="bike-draw-animation-section">
+            <div class="container text-center">
+                <h2 class="animated-element">Design em Movimento.</h2>
+                <p class="animated-element">Veja como cada linha da Tembike é desenhada a pensar na sua experiência.</p>
+            </div>
+            <div class="animation-container">
+                <div class="bike-frame draw">
+                    <svg class="frame" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162 146" >
+                        <g id="handlebars">
+                            <line fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="73.2" y1="9.4" x2="88.5" y2="6.8"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" x1="74.2" y1="23.5" x2="89.5" y2="20.9"/>
+                            <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M90.2,6.3c4.8-0.6,7.5-0.7,10-0.8 c23.1-0.6,14.5,8.6,2,12.2c-4.1,1.2-8,2-12,2.4"/>
+                        </g>
+                        <g id="frame">
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="152.6" cy="107.6" r="2.4"/>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="7.9" cy="107.6" r="2.4"/>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="7" stroke-miterlimit="10" cx="74.8" cy="112" r="7.8"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="7.5" y1="104.2" x2="43.9" y2="59.3"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" x1="36" y1="41" x2="66.5" y2="108.4"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" x1="10.5" y1="110.8" x2="66.5" y2="110.8"/>
+                            <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M66.5,117.8c0,0-48,0-49.1,0c-1.5,0-7.4,0-8.7-7.5"/>
+                            <path fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M12.8,102.8h61.7c0,0,1.5,0,2.8,0.8"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="63.9" y1="136.9" x2="70" y2="118.9"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="square" stroke-miterlimit="10" x1="62" y1="138.5" x2="66" y2="138.5"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" x1="74.1" y1="100.8" x2="76.6" y2="93.3"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="square" stroke-miterlimit="10" x1="75.7" y1="91.6" x2="78.1" y2="91.6"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" x1="77.9" y1="103.6" x2="128.3" y2="59.5"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="7.5" stroke-miterlimit="10" x1="120.9" y1="38.5" x2="133.8" y2="67.3"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="131.5" y1="64.2" x2="150.2" y2="105.6"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" x1="109.7" y1="15.1" x2="120.9" y2="39.6"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" x1="98.3" y1="75.3" x2="102.2" y2="81.8"/>
+                            <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M120.9,41.8c0.8,15.2-19.1,42.5-64.3,44.9"/>
+                        </g>
+                        <path id="seat" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M51.2,33.8c0.4-0.2,0.9-0.4,1.3-0.6c5.5-3-4.1,5.4-10,7.8c-9.1,3.6-20.1,2.3-24.2,0c-9.8-5.4-6.4-7.7,5.2-7.1 c8.4,0.4,9.9,1.7,19,1.1C44,34.9,48.1,35,51.2,33.8c0,0-15.1,3.9-21.4,3.7S13,34.3,17.3,36.8s16.5,5.6,28.2,1.1"/>
+                    </svg>
+                </div>
+                <div class="wheels draw">
+                    <svg class="wheel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 99" >
+                        <g>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="49.4" cy="50" r="43.9"/>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" cx="49.4" cy="50" r="38.9"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="24.3" y1="20.2" x2="73.7" y2="80.4"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="64.7" y1="14.4" x2="33.2" y2="85.5"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="43.8" y1="11.3" x2="54" y2="89"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="10.6" y1="55.9" x2="88.1" y2="44.5"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="12.4" y1="37.7" x2="85.9" y2="62.8"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="80.5" y1="27.1" x2="17.8" y2="72.8"/>
+                        </g>
+                    </svg>
+                    <svg class="wheel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 101" >
+                        <g>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" cx="49.4" cy="50" r="43.9"/>
+                            <circle fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" cx="49.4" cy="50" r="38.9"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="24.3" y1="20.2" x2="73.7" y2="80.4"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="64.7" y1="14.4" x2="33.2" y2="85.5"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="43.8" y1="11.3" x2="54" y2="89"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="10.6" y1="55.9" x2="88.1" y2="44.5"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="12.4" y1="37.7" x2="85.9" y2="62.8"/>
+                            <line fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" x1="80.5" y1="27.1" x2="17.8" y2="72.8"/>
+                        </g>
+                    </svg>
+                </div>
             </div>
         </section>
 
@@ -439,6 +550,137 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
+
+        // --- LÓGICA DA ANIMAÇÃO DE DESENHO DA BICICLETA ---
+        var bikeDrawSection = $('#bike-draw-animation-section');
+        if (bikeDrawSection.length) {
+            
+            // Funções de apoio para a animação de desenho
+            function SVG(tag) {
+                return document.createElementNS('http://www.w3.org/2000/svg', tag);
+            }
+
+            function replaceRectsWithPaths(parentElement) {
+                var rects = $(parentElement).find('rect');
+                $.each(rects, function() {
+                    var rectX = $(this).attr('x');
+                    var rectY = $(this).attr('y');
+                    var rectX2 = parseFloat(rectX) + parseFloat($(this).attr('width'));
+                    var rectY2 = parseFloat(rectY) + parseFloat($(this).attr('height'));
+                    var convertedPath = 'M' + rectX + ',' + rectY + ' ' + rectX2 + ',' + rectY + ' ' + rectX2 + ',' + rectY2 + ' ' + rectX + ',' + rectY2 + ' ' + rectX + ',' + rectY;
+                    $(SVG('path')).attr('d', convertedPath).attr('fill', $(this).attr('fill')).attr('stroke', $(this).attr('stroke')).attr('stroke-width', $(this).attr('stroke-width')).attr('stroke-linecap', $(this).attr('stroke-linecap')).insertAfter(this);
+                });
+                $(rects).remove();
+            }
+
+            function replaceLinesWithPaths(parentElement) {
+                var lines = $(parentElement).find('line');
+                $.each(lines, function() {
+                    var lineX1 = $(this).attr('x1');
+                    var lineY1 = $(this).attr('y1');
+                    var lineX2 = $(this).attr('x2');
+                    var lineY2 = $(this).attr('y2');
+                    var convertedPath = 'M' + lineX1 + ',' + lineY1 + ' ' + lineX2 + ',' + lineY2;
+                    $(SVG('path')).attr('d', convertedPath).attr('fill', $(this).attr('fill')).attr('stroke', $(this).attr('stroke')).attr('stroke-width', $(this).attr('stroke-width')).attr('stroke-linecap', $(this).attr('stroke-linecap')).insertAfter(this);
+                });
+                $(lines).remove();
+            }
+
+            function replaceCirclesWithPaths(parentElement) {
+                var circles = $(parentElement).find('circle');
+                $.each(circles, function() {
+                    var cX = $(this).attr('cx');
+                    var cY = $(this).attr('cy');
+                    var r = $(this).attr('r');
+                    var r2 = parseFloat(r * 2);
+                    var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-r) + ', 0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + r2 + ',0 ' + 'a ' + r + ', ' + r + ' 0 1,0 ' + (-r2) + ',0 ';
+                    $(SVG('path')).attr('d', convertedPath).attr('fill', $(this).attr('fill')).attr('stroke', $(this).attr('stroke')).attr('stroke-width', $(this).attr('stroke-width')).attr('stroke-linecap', $(this).attr('stroke-linecap')).insertAfter(this);
+                });
+                $(circles).remove();
+            }
+            
+            function replaceEllipsesWithPaths(parentElement) {
+                var ellipses = $(parentElement).find('ellipse');
+                $.each(ellipses, function() {
+                    var cX = $(this).attr('cx');
+                    var cY = $(this).attr('cy');
+                    var rX = $(this).attr('rx');
+                    var rY = $(this).attr('ry');
+                    var convertedPath = 'M' + cX + ', ' + cY + ' m' + (-rX) + ', 0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + rX*2 + ',0 ' + 'a ' + rX + ', ' + rY + ' 0 1,0 ' + (-rX*2) + ',0 ';
+                    $(SVG('path')).attr('d', convertedPath).attr('fill', $(this).attr('fill')).attr('stroke', $(this).attr('stroke')).attr('stroke-width', $(this).attr('stroke-width')).attr('stroke-linecap', $(this).attr('stroke-linecap')).insertAfter(this);
+                });
+                $(ellipses).remove();
+            }
+
+            function replacePolygonsWithPaths(parentElement) {
+                var polygons = $(parentElement).find('polygon');
+                $.each(polygons, function() {
+                    var points = $(this).attr('points');
+                    var polyPoints = points.split(/[ ,]+/);
+                    var endPoint = polyPoints[0] + ', ' + polyPoints[1];
+                    $(SVG('path')).attr('d', 'M' + points + ' ' + endPoint).attr('fill', $(this).attr('fill')).attr('stroke', $(this).attr('stroke')).attr('stroke-width', $(this).attr('stroke-width')).attr('stroke-linecap', $(this).attr('stroke-linecap')).insertAfter(this);
+                });
+                $(polygons).remove();
+            }
+
+            function replacePolylinesWithPaths(parentElement) {
+                var polylines = $(parentElement).find('polyline');
+                $.each(polylines, function() {
+                    var points = $(this).attr('points');
+                    $(SVG('path')).attr('d', 'M' + points).attr('fill', $(this).attr('fill')).attr('stroke', $(this).attr('stroke')).attr('stroke-width', $(this).attr('stroke-width')).attr('stroke-linecap', $(this).attr('stroke-linecap')).insertAfter(this);
+                });
+                $(polylines).remove();
+            }
+
+            function replaceWithPaths(parentElement) {
+                replaceRectsWithPaths(parentElement);
+                replaceLinesWithPaths(parentElement);
+                replaceEllipsesWithPaths(parentElement);
+                replaceCirclesWithPaths(parentElement);
+                replacePolygonsWithPaths(parentElement);
+                replacePolylinesWithPaths(parentElement);
+            }
+
+            function drawSVGPaths(_parentElement, _timeMin, _timeMax, _timeDelay) {
+                var paths = $(_parentElement).find('path');
+                $.each(paths, function(i) {
+                    var totalLength = this.getTotalLength();
+                    $(this).css({
+                        'stroke-dashoffset': totalLength,
+                        'stroke-dasharray': totalLength + ' ' + totalLength
+                    });
+                    $(this).delay(_timeDelay * i).animate({
+                        'stroke-dashoffset': 0
+                    }, {
+                        duration: Math.floor(Math.random() * _timeMax) + _timeMin,
+                        easing: 'easeInOutQuad'
+                    });
+                });
+            }
+            
+            $.extend($.easing, {
+                easeInOutQuad: function(x, t, b, c, d) {
+                    if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+                    return -c / 2 * ((--t) * (t - 2) - 1) + b;
+                }
+            });
+
+            // Prepara o SVG para a animação
+            replaceWithPaths(bikeDrawSection.find('svg'));
+
+            // Configura o Intersection Observer
+            const bikeDrawObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        drawSVGPaths(bikeDrawSection.find('svg'), 1000, 2000, 50);
+                        observer.unobserve(entry.target); // Anima apenas uma vez
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            bikeDrawObserver.observe(bikeDrawSection[0]);
+        }
+
         // --- ANIMAÇÃO DE ENTRADA DO TÍTULO HERO ---
         const heroTitle = document.querySelector('.hero-content h1');
         if(heroTitle) {
@@ -457,7 +699,7 @@
             }, 500);
         }
         
-        // --- OBSERVER PARA ANIMAÇÕES DE SCROLL ---
+        // --- OBSERVER PARA ANIMAÇÕES DE SCROLL GERAIS ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
