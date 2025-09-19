@@ -52,33 +52,32 @@
 
         /* --- NAVEGAÇÃO --- */
         .navbar {
-            background-color: var(--tembike-blue); /* Alterado para a cor azul principal */
+            background-color: var(--tembike-blue);
             padding: 1rem 0; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             transform: translateY(0);
             transition: transform 0.4s var(--transition-smooth), background-color 0.3s ease;
         }
         .navbar.hidden { transform: translateY(-100%); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 110px; width: auto; } /* Aumentei o tamanho da logo */
+        .logo img { height: 110px; width: auto; }
         .nav-menu ul { list-style: none; display: flex; gap: 2.5rem; }
         .nav-menu a {
-            text-decoration: none; color: var(--background-white); /* Cor do texto alterada para branco */
+            text-decoration: none; color: var(--background-white);
             font-weight: 500; font-size: 1rem;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
         .nav-menu a:hover { opacity: 1; }
         .nav-cta a {
-            background-color: var(--background-white); /* Cor de fundo do botão invertida */
-            color: var(--tembike-blue); /* Cor do texto do botão invertida */
+            background-color: var(--background-white);
+            color: var(--tembike-blue);
             padding: 10px 24px; border-radius: 8px; font-weight: 600;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
         }
         .nav-cta a:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); }
         .hamburger { display: none; }
-        .bar { background-color: var(--background-white); } /* Cor do ícone do hamburger alterada para branco */
-
+        .bar { background-color: var(--background-white); }
 
         /* --- HERO COM IMAGEM --- */
         .hero-section {
@@ -101,7 +100,7 @@
             margin: 1.5rem auto 2.5rem auto; color: rgba(255,255,255,0.9);
         }
 
-        /* --- BOTÃO PRINCIPAL --- */
+        /* --- BOTÕES --- */
         .cta-button {
             display: inline-block; background-color: var(--background-white); color: var(--tembike-blue);
             padding: 16px 36px; border-radius: 10px; text-decoration: none;
@@ -111,22 +110,37 @@
         }
         .cta-button:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3); }
 
+        .cta-button-secondary {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--tembike-blue);
+            margin-top: 1.5rem;
+            padding: 10px 20px;
+            border: 2px solid var(--tembike-blue);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .cta-button-secondary:hover {
+            background-color: var(--tembike-blue);
+            color: var(--background-white);
+            transform: translateY(-3px);
+        }
+
         /* --- VANTAGENS --- */
         .features-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
             margin-top: 5rem;
-            align-items: start; /* Alinha os itens ao topo */
+            align-items: start;
         }
         .feature-item {
             text-align: center;
             padding: 2rem;
-            display: flex; /* Adicionado para alinhar conteúdo interno */
-            flex-direction: column; /* Adicionado para alinhar conteúdo interno */
-            align-items: center; /* Adicionado para alinhar conteúdo interno */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .feature-item p {
-             flex-grow: 1; /* Faz o parágrafo ocupar espaço e empurrar o conteúdo */
-        }
+        .feature-item p { flex-grow: 1; }
         .feature-icon {
             display: inline-flex; justify-content: center; align-items: center;
             width: 70px; height: 70px;
@@ -139,43 +153,48 @@
         .feature-item:hover .feature-icon { background-color: var(--tembike-blue); }
         .feature-item:hover .feature-icon svg { color: var(--background-white); transform: scale(1.1); }
         
-        /* --- SECÇÃO ESTILO DE VIDA (URBANO/ECOLÓGICO) --- */
-        .lifestyle-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 5rem;
-        }
-        .lifestyle-image {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
-        }
-        .lifestyle-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            aspect-ratio: 4 / 5;
-        }
+        /* --- SECÇÃO ESTILO DE VIDA --- */
+        .lifestyle-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem; }
+        .lifestyle-image { border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+        .lifestyle-image img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4 / 5; }
 
         /* --- TESTEMUNHOS --- */
+        #testimonials { background-color: var(--background-light-gray); }
         .testimonial-card {
             background-color: var(--background-white);
             padding: 3rem; border-radius: 16px;
             max-width: 700px; margin: 0 auto;
             text-align: center;
         }
-        .testimonial-card .quote-icon {
-            color: var(--tembike-blue); font-size: 3rem;
-            line-height: 1; opacity: 0.2;
-        }
-        .testimonial-card p.quote {
-            font-size: 1.5rem; font-weight: 500; color: var(--dark-text);
-            font-style: italic; margin: 1.5rem 0;
-        }
+        .testimonial-card .quote-icon { color: var(--tembike-blue); font-size: 3rem; line-height: 1; opacity: 0.2; }
+        .testimonial-card p.quote { font-size: 1.5rem; font-weight: 500; color: var(--dark-text); font-style: italic; margin: 1.5rem 0; }
         .testimonial-card cite { font-style: normal; font-weight: 600; }
         .testimonial-card cite span { display: block; font-weight: 400; color: var(--light-text); font-size: 0.9rem; }
+
+        /* --- NOVA ANIMAÇÃO BICICLETA --- */
+        #new-animation-section {
+            padding: 0;
+        }
+        .new-animation-container {
+            width:100%;
+            padding: 7rem 2rem;
+            overflow:hidden;
+            background: var(--tembike-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .new-animation-container svg {
+            width: 80%;
+            height: auto;
+            max-width: 600px;
+            overflow: visible;
+        }
+        .new-animation-container .cta-button {
+            background-color: white;
+            color: var(--tembike-blue);
+        }
 
         /* --- CTA FINAL --- */
         .cta-final-section { background-color: var(--dark-text); }
@@ -189,18 +208,16 @@
 
         /* --- RODAPÉ --- */
         .footer {
-            background-color: var(--tem);
+            background-color: var(--background-light-gray);
             padding: 4rem 0 2rem 0;
         }
         .footer .container {
-             display: flex; /* Adicionado para alinhar */
-            flex-direction: column; /* Adicionado para alinhar */
-            align-items: center; /* Adicionado para alinhar */
-            gap: 1.5rem; /* Espaçamento entre logo e texto */
+             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
         }
-        .footer .logo img {
-            height: 100px; /* Logo maior no rodapé */
-        }
+        .footer .logo img { height: 100px; }
         .footer p { font-size: 0.9rem; }
         
         @media (max-width: 992px) {
@@ -208,22 +225,16 @@
             .lifestyle-section { grid-template-columns: 1fr; gap: 3rem; }
             .lifestyle-section .lifestyle-text { text-align: center; }
             .lifestyle-section .lifestyle-text p { margin-left: auto; margin-right: auto;}
-            .lifestyle-section:nth-of-type(odd) .lifestyle-image { order: -1; } /* Image comes first on mobile */
+            .lifestyle-section:nth-of-type(even) .lifestyle-image { order: -1; } /* Image comes first on mobile */
         }
 
         @media (max-width: 768px) {
             section { padding: 5rem 0; }
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
-
             .nav-menu, .nav-cta { display: none; }
-            .hamburger {
-                display: block; z-index: 1001; cursor: pointer; background: none; border: none;
-            }
-            .bar {
-                display: block; width: 25px; height: 3px; margin: 5px auto;
-                transition: all 0.3s ease-in-out;
-            }
+            .hamburger { display: block; z-index: 1001; cursor: pointer; background: none; border: none; }
+            .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; }
             .mobile-menu {
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
                 background-color: var(--background-white);
@@ -235,12 +246,10 @@
             .mobile-menu ul { list-style: none; text-align: center; }
             .mobile-menu li { margin: 1.5rem 0; }
             .mobile-menu a { font-size: 2rem; color: var(--dark-text); font-weight: 700; text-decoration: none; }
-            .hamburger.active .bar { background-color: var(--dark-text); } /* Cor do ícone quando o menu está aberto */
+            .hamburger.active .bar { background-color: var(--dark-text); }
             .hamburger.active .bar:nth-child(2) { opacity: 0; }
             .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-
             .features-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -260,7 +269,7 @@
                 </ul>
             </nav>
             <div class="nav-cta">
-                <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20Tembike." target="_blank">Agendar Test-Ride</a>
+                <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20Tembike." target="_blank">Test-Ride Gratuito</a>
             </div>
             <button class="hamburger" aria-label="Abrir menu">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -272,7 +281,7 @@
         <ul>
             <li><a href="#features">Vantagens</a></li>
             <li><a href="#lifestyle">Estilo de Vida</a></li>
-            <li><a href="#testimonials">Contacto</a></li>
+            <li><a href="#contact">Contacto</a></li>
         </ul>
     </div>
 
@@ -281,7 +290,7 @@
             <div class="container hero-content">
                 <h1>A Cidade Aos Seus Pés.</h1>
                 <p class="animated-element">Redescubra Curitiba com a liberdade, potência e o design inovador da Tembike. O seu percurso diário, reinventado.</p>
-                <a href="#features" class="cta-button animated-element">Descubra as Vantagens</a>
+                <a href="#features" class="cta-button animated-element">Explore a Revolução</a>
             </div>
         </section>
 
@@ -291,21 +300,25 @@
                 <p class="animated-element">Cada componente foi selecionado para oferecer uma experiência de condução superior, combinando performance, conforto e estilo.</p>
                 <div class="features-grid">
                     <div class="feature-item animated-element">
-                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div>
-                        <h3>Performance Elétrica</h3>
-                        <p>Motores potentes e silenciosos que tornam cada subida uma mera formalidade e cada viagem um prazer.</p>
+                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div>
+                        <h3>Potência que Inspira</h3>
+                        <p>Sinta a aceleração suave e silenciosa. Conquiste as subidas de Curitiba sem esforço e transforme o trânsito em pura diversão.</p>
                     </div>
                     <div class="feature-item animated-element" style="transition-delay: 0.2s;">
-                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.91 15.91a4.5 4.5 0 01-6.364 0 4.5 4.5 0 010-6.364 4.5 4.5 0 016.364 0z" /></svg></div>
-                        <h3>Autonomia fiável</h3>
-                        <p>Até 80km de autonomia com uma única carga, graças às nossas baterias de alta capacidade perfeitamente integradas.</p>
+                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M3.75 18h14.5a1.125 1.125 0 001.125-1.125v-9A1.125 1.125 0 0018.25 6.75h-14.5A1.125 1.125 0 002.625 7.875v9A1.125 1.125 0 003.75 18z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 8.25l-2.25 3h3.75l-2.25 3" />
+                        </svg></div>
+                        <h3>Liberdade Sem Limites</h3>
+                        <p>Vá mais longe. Explore cada canto da cidade, do Parque Barigui ao Jardim Botânico, com uma única carga. A aventura chama por si.</p>
                     </div>
                     <div class="feature-item animated-element" style="transition-delay: 0.4s;">
-                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg></div>
-                        <h3>Design & Conforto</h3>
-                        <p>Um quadro com design ergonómico e componentes de qualidade premium que garantem uma posição de condução ideal.</p>
+                        <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-3.182 3.182 2.25 2.25 0 002.25 2.25h3.182a3 3 0 003.182-3.182 2.25 2.25 0 00-2.25-2.25H9.53z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25a.75.75 0 01.75.75v11.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75z" /></svg></div>
+                        <h3>Estilo que se Sente</h3>
+                        <p>Pedale com o máximo conforto e chegue com um estilo impecável. Um design premiado que combina ergonomia e uma estética urbana inconfundível.</p>
                     </div>
                 </div>
+                 <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20agendar%20um%20test-ride%20gratuito." target="_blank" class="cta-button-secondary animated-element" style="margin-top: 3rem; font-size: 1.1rem; padding: 14px 28px;">Agende um Test-Ride Grátis</a>
             </div>
         </section>
         
@@ -313,17 +326,18 @@
             <div class="container">
                 <div class="lifestyle-section">
                     <div class="lifestyle-text animated-element">
-                        <h2 style="text-align: left;">Onde a cidade encontra a natureza.</h2>
-                        <p>A Tembike é mais do que uma bicicleta, é a sua ponte entre a energia do asfalto e a tranquilidade dos espaços verdes. Mova-se com zero emissões, redescubra os parques da cidade e contribua para um futuro mais sustentável, uma pedalada de cada vez.</p>
+                        <h2 style="text-align: left;">Conecte-se com a Cidade</h2>
+                        <p>Deixe o carro na garagem. Reduza a sua pegada de carbono e redescubra a beleza dos parques e ciclovias de Curitiba. A sua jornada sustentável começa aqui.</p>
+                        <a href="https://wa.me/554130240022?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20modelo%20urbano." target="_blank" class="cta-button-secondary animated-element">Conheça o Modelo T-Urbana</a>
                     </div>
                     <div class="lifestyle-image animated-element">
-                        <img src="https://images.pexels.com/photos/13738411/pexels-photo-13738411.jpeg" alt="[Imagem de uma bicicleta elétrica em detalhe, mostrando a sua tecnologia]">
+                        <img src="https://images.pexels.com/photos/13738411/pexels-photo-13738411.jpeg" alt="[Imagem de uma bicicleta elétrica em detalhe]">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-light">
+        <section style="background-color: var(--background-light-gray);">
              <div class="container">
                 <div class="lifestyle-section">
                      <div class="lifestyle-image animated-element">
@@ -331,12 +345,59 @@
                     </div>
                     <div class="lifestyle-text animated-element">
                         <h2 style="text-align: left;">Liberdade é o novo luxo.</h2>
-                        <p>Esqueça o trânsito, os horários e os limites. Com a Tembike, a sua rotina transforma-se numa aventura. Explore novos caminhos, sinta o vento no rosto e chegue ao seu destino revigorado e no controlo do seu tempo.</p>
+                        <p>Diga adeus ao stress do trânsito. Chegue mais rápido, sem suar, e com um sorriso no rosto. Recupere o seu tempo e a sua paz de espírito.</p>
+                        <a href="https://wa.me/554130240022?text=Olá!%20Quero%20agendar%20um%20test-ride%20e%20sentir%20essa%20liberdade." target="_blank" class="cta-button-secondary animated-element">Quero o Meu Test-Ride</a>
                     </div>
                 </div>
             </div>
         </section>
-
+        
+        <section id="new-animation-section">
+            <div class="new-animation-container">
+                <div class="container text-center">
+                     <h2 class="animated-element is-visible" style="color: #fff;">Sinta o Fluxo.</h2>
+                     <p class="animated-element is-visible" style="color: rgba(255,255,255,0.8);">Movimento é vida. A Tembike foi desenhada para se integrar perfeitamente no seu ritmo, tornando cada viagem uma experiência única.</p>
+                </div>
+                <svg viewBox="0 0 510 510" opacity="0">
+                    <path stroke="#00000010" stroke-width="12" stroke-linecap="round" d="M26,447 L477,447" />
+                    <path id="road" stroke="#ffffff30" stroke-width="4" stroke-linecap="round" d="M28,447 L475,447" stroke-dasharray="35 55" />
+                    <g class="crank">
+                        <path stroke="#9D9FA2" stroke-width="6" d="M225,368 L265,368"/>
+                        <path class="pedal" stroke="#FFFFFF" stroke-width="8" d="M255,368 L275,368"/>   
+                    </g>
+                    <g id="wheel">
+                        <path id="spokes" fill="none" stroke="#9D9FA2" stroke-width="3" d="M399.8,250v192.4 M496,346.2H303.6 M363,257.4l73.6,177.8 M488.7,309.4l-177.8,73.6 M467.8,278.2L331.7,414.3 M467.8,414.3L331.7,278.2 M436.6,257.4L363,435.1 M488.7,383.1l-177.8-73.6"/>
+                        <circle id="tire" cx="400" cy="346" r="94" stroke-width="11" stroke="#FFFFFF" fill="none"/>
+                        <circle id="rim" cx="400" cy="346" r="81" stroke-width="4" stroke="#fff" fill="none"/>
+                        <circle id="nexus" cx="400" cy="346" r="7.5" fill="#FFFFFF"/>
+                    </g>
+                    <use href="#wheel" x="-299"/>
+                    <g id="frame">
+                        <path fill="#fff" d="M402.9,344.9c-5.5-6.8-16.6-19.3-19.5-24.9c0,0-34.1-110.3-42.2-137.3l-7.5,2.9l8.7,28.1H180.8 c0,0-16.6-53.1-17-54.3l-7.5,2.4c4.8,15.5,13.9,44.4,18.8,60.1c-23.5,38.2-54.3,88.2-77.8,126.4v0l0,0.1 c38,7.5,92.1,18.3,129.9,25.8c1.2-1.4,121.5-140.6,121.5-140.6c4.4,14.2,25.1,81.7,27.3,88.8c1.7,4.4,14.8,19.5,20.8,26.3 C399.1,351.4,404.4,348.4,402.9,344.9 M109.4,343.5c2.1-3.4,51.6-84,68.7-111.6c5.4,17.2,40.5,129.3,41.6,132.9 C219.8,364.8,138.7,349.2,109.4,343.5z M226.2,357.5l-0.3,0.4c-10.5-33.6-31-99.2-41.5-132.6h156.2L226.2,357.5z"/>
+                        <path id="seat" fill="#9D9FA2" d="M122.9,159.2c-1.5-1-2.5-1.6-3.6-3c-1.1-1.5-1.6-3.4-1-5.1c1.2-2.9,5-3.4,8.1-3.2c3.7,0.2,7.3,0.8,10.9,1.2 c12.9,1.5,26,1.7,39,0.5c5.4-0.5,10.8-1.2,16.2-1c4.1,0.1,8.3,0.8,12.2,2.1c1.3,0.4,2.7,0.9,3.7,1.8c1,0.9,1.7,2.4,1.3,3.7 c-0.7,2.1-3.4,2.7-5.6,2.7c-6.4,0.1-12.8-1-19.2-0.8c-7.5,0.2-14.9,2.2-21.4,5.8c-3.6,2-7,4.4-10.7,6c-5.4,2.3-11.7,2.8-17.3,0.9 C129.9,169,125.1,164.7,122.9,159.2"/>
+                        <path id="handles" fill="none" stroke="#FFFFFF" stroke-width="13.5" stroke-linecap="round" d="M352.9,174.7h27.5 c39,0,39.6,40.7,4.2,40.7 M373.5,232.9c35.4,0,30.3-42.7-8.7-42.7h-27.5 M352,174.7l-16.2,15.5"/>
+                    </g>
+                    <g id="chain" stroke="#fff" stroke-width="3">
+                        <path stroke-dasharray="3 6" d="M105,342 L220,349"/>
+                        <path stroke-dasharray="3 6" d="M107,352 L217,387"/>
+                    </g>
+                    <circle cx="225" cy="368" r="10" fill="#fff" />
+                    <circle cx="225" cy="368" r="6.5" fill="#9D9FA2" />
+                    <circle cx="225" cy="368" r="20" stroke="#9D9FA2" stroke-width="4" fill="none" />
+                    <g class="crank">
+                        <path stroke="#9D9FA2" stroke-width="6" d="M225,368 L185,368"/>
+                        <path class="pedal" stroke="#FFFFFF" stroke-width="8" d="M175,368 L195,368"/>   
+                    </g>
+                    <g class="wisp1" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"> <path d="M95,251 L9,251" /> <path d="M95,251 L9,251" /> </g>
+                    <g class="wisp2" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"> <path d="M43,422 L0,422" /> <path d="M43,422 L0,422" /> </g>
+                    <g class="wisp3" stroke="#fff" stroke-width="7" stroke-linecap="round"> <path d="M167,198 L111,198" /> <path d="M167,198 L111,198" /> <path d="M167,198 L111,198" /> </g>
+                    <g class="wisp4" stroke="#9D9FA2" stroke-width="8" stroke-linecap="round"> <path d="M122,159 L50,159" /> <path d="M122,159 L50,159" /> </g>
+                </svg>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="https://wa.me/554130240022?text=Olá!%20Quero%20sentir%20o%20fluxo%20da%20Tembike." target="_blank" class="cta-button animated-element is-visible">Reservar a Minha Tembike</a>
+                </div>
+            </div>
+        </section>
 
         <section id="testimonials" class="testimonials-section">
             <div class="container">
@@ -344,16 +405,17 @@
                     <div class="quote-icon">“</div>
                     <p class="quote">A Tembike não mudou apenas a forma como vou para o trabalho, mudou a forma como vejo Curitiba. Redescobri a cidade, poupo tempo, dinheiro e ainda faço exercício. É simplesmente genial.</p>
                     <cite>Mariana Costa<span>Cliente Tembike, Curitiba</span></cite>
+                     <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20saber%20mais,%20como%20a%20Mariana." target="_blank" class="cta-button-secondary animated-element is-visible" style="margin-top: 2rem;">Quero Ser o Próximo</a>
                 </div>
             </div>
         </section>
         
-        <section class="cta-final-section">
+        <section id="contact" class="cta-final-section">
             <div class="container text-center">
                 <div class="cta-final-content">
-                    <h2 class="animated-element">Dê o primeiro passo.</h2>
-                    <p class="animated-element">A melhor forma de entender é sentir a estrada. Agende um test-ride gratuito e descubra a sua Tembike.</p>
-                    <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20agendar%20um%20test-ride%20gratuito." target="_blank" class="cta-button animated-element" style="transition-delay: 0.2s;">Agendar Agora</a>
+                    <h2 class="animated-element">Está a um passo da revolução.</h2>
+                    <p class="animated-element">A teoria é boa, mas a prática é incrível. Sinta a potência, o conforto e a liberdade. Agende o seu test-ride gratuito hoje mesmo. Sem compromisso.</p>
+                    <a href="https://wa.me/554130240022?text=Olá!%20Gostaria%20de%20agendar%20um%20test-ride%20gratuito." target="_blank" class="cta-button animated-element" style="transition-delay: 0.2s;">Agendar Meu Test-Ride Gratuito</a>
                 </div>
             </div>
         </section>
@@ -365,10 +427,14 @@
             <a href="#" class="logo">
                 <img src="https://i.ibb.co/vtTDrpn/Design-sem-nome.png" alt="Logo Tembike no Rodapé">
             </a>
+            <div class="nav-cta" style="margin-top: 1rem;">
+                <a href="https://wa.me/554130240022?text=Olá!%20Estou%20no%20final%20da%20página%20e%20quero%20agendar%20um%20test-ride." target="_blank">Fale Conosco no WhatsApp</a>
+            </div>
             <p>&copy; 2025 Tembike. Todos os direitos reservados.</p>
         </div>
     </footer>
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         // --- ANIMAÇÃO DE ENTRADA DO TÍTULO HERO ---
@@ -425,6 +491,37 @@
             hamburger.classList.remove("active");
             mobileMenu.classList.remove("active");
         }));
+
+        // --- GSAP BIKE ANIMATION ---
+        gsap.to('.new-animation-container svg', {opacity:1, ease:'power2.inOut'})
+        gsap.timeline({defaults:{ease:'none', repeat:-1}})
+          .to('#road', {duration:0.8, attr:{'stroke-dashoffset':90}}, 0)
+          .to('#wheel', {rotate:22, transformOrigin:'50%'}, 0)
+          .to('#chain path', {attr:{'stroke-dashoffset':(i)=>[-9,9][i]}}, 0)
+          .to('.crank', {duration:3, rotate:360, transformOrigin:(i)=>['0','100%'][i]}, 0)
+          .to('.pedal', {duration:3, rotate:-360, transformOrigin:'50%'}, 0)
+          .timeScale(2.67)
+
+        gsap.timeline({repeat:-1, repeatDelay:0.2})
+          .from('.wisp1 path', {attr:{d:'M99,251 L99,251'}, ease:'power1.in', stagger:0.5}, 0)
+          .to('.wisp1 path', {x:-22, attr:{d:'M9,251 L9,251'}, ease:'sine', stagger:0.5}, 0.5)
+          .to('.wisp1 path', {duration:0.1, scale:0, ease:'power2.in', stagger:0.5}, 0.9)
+
+        gsap.timeline({repeat:-1, repeatDelay:0.3})
+          .from('.wisp2 path', {attr:{d:'M43,422 L43,422'}, ease:'power1.in', stagger:0.4}, 0)
+          .to('.wisp2 path', {x:-25, attr:{d:'M0,422 L0,422'}, ease:'sine', stagger:0.4}, 0.5)
+          .to('.wisp2 path', {duration:0.1, scale:0, ease:'power2.in', stagger:0.4}, 0.9)
+          .seek(0.5)
+
+        gsap.timeline({repeat:-1})
+          .from('.wisp3 path', {attr:{d:'M167,198 L167,198'}, ease:'power1.in', stagger:0.45}, 0)
+          .to('.wisp3 path', {x:-30, attr:{d:'M111,198 L111,198'}, ease:'sine', stagger:0.45}, 0.5)
+          .to('.wisp3 path', {duration:0.1, scale:0, ease:'power2.in', stagger:0.45}, 0.9)
+
+        gsap.timeline({repeat:-1})
+          .from('.wisp4 path', {attr:{d:'M122,159 L122,159'}, ease:'power1.in', stagger:0.45}, 0)
+          .to('.wisp4 path', {x:-30, attr:{d:'M60,159 L50,159'}, ease:'sine', stagger:0.45}, 0.5)
+          .to('.wisp4 path', {duration:0.1, scale:0, ease:'power2.in', stagger:0.45}, 0.9)
     });
     </script>
 </body>
